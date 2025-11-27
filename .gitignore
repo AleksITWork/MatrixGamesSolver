@@ -1,0 +1,15 @@
+```
+# .NET build artifacts
+bin/
+obj/
+# Dependencies
+packages/
+# Logs
+*.log
+# Temporary files
+*.tmp
+# Environment
+.env
+.env.local
+*.env.*
+```
