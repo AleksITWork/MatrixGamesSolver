@@ -1,0 +1,15 @@
+/workspace/bin/Debug/net6.0/GameTheorySolver
+/workspace/bin/Debug/net6.0/GameTheorySolver.deps.json
+/workspace/bin/Debug/net6.0/GameTheorySolver.runtimeconfig.json
+/workspace/bin/Debug/net6.0/GameTheorySolver.dll
+/workspace/bin/Debug/net6.0/GameTheorySolver.pdb
+/workspace/obj/Debug/net6.0/GameTheorySolver.csproj.AssemblyReference.cache
+/workspace/obj/Debug/net6.0/GameTheorySolver.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/obj/Debug/net6.0/GameTheorySolver.AssemblyInfoInputs.cache
+/workspace/obj/Debug/net6.0/GameTheorySolver.AssemblyInfo.cs
+/workspace/obj/Debug/net6.0/GameTheorySolver.csproj.CoreCompileInputs.cache
+/workspace/obj/Debug/net6.0/GameTheorySolver.dll
+/workspace/obj/Debug/net6.0/refint/GameTheorySolver.dll
+/workspace/obj/Debug/net6.0/GameTheorySolver.pdb
+/workspace/obj/Debug/net6.0/GameTheorySolver.genruntimeconfig.cache
+/workspace/obj/Debug/net6.0/ref/GameTheorySolver.dll

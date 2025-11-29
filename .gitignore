@@ -1,15 +1,1 @@
-```
-# .NET build artifacts
-bin/
-obj/
-# Dependencies
-packages/
-# Logs
-*.log
-# Temporary files
-*.tmp
-# Environment
-.env
-.env.local
-*.env.*
-```
+Nothing needs to be added to the .gitignore file based on the provided changes. The only modified file is 'Program.cs', which is a source code file and should not be ignored. There are no build artifacts, dependencies, or temporary files in the change list that require ignoring.
