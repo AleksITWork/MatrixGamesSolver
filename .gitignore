@@ -1,1 +1,24 @@
-Nothing needs to be added to the .gitignore file based on the provided changes. The only modified file is 'Program.cs', which is a source code file and should not be ignored. There are no build artifacts, dependencies, or temporary files in the change list that require ignoring.
+```
+# Compiled and build artifacts
+*.exe
+*.dll
+*.so
+*.a
+*.obj
+*.out
+obj/
+bin/
+# Dependencies
+packages/
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+# Environment
+.env
+.env.local
+*.env.*
+# Editors
+.vscode/
+.idea/
+```
