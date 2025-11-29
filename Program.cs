@@ -8,74 +8,74 @@ namespace GameTheorySolver
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Game Theory Solver");
+            Console.WriteLine("Решатель теории игр");
             Console.WriteLine("==================");
             
-            // Get matrix dimensions
-            Console.Write("Enter number of rows (M): ");
+            // Получение размеров матрицы
+            Console.Write("Введите количество строк (M): ");
             string? mInput = Console.ReadLine();
             if (string.IsNullOrEmpty(mInput) || !int.TryParse(mInput, out int m))
             {
-                Console.WriteLine("Invalid input for number of rows. Using default value 2.");
+                Console.WriteLine("Некорректный ввод количества строк. Используется значение по умолчанию 2.");
                 m = 2;
             }
             
-            Console.Write("Enter number of columns (N): ");
+            Console.Write("Введите количество столбцов (N): ");
             string? nInput = Console.ReadLine();
             if (string.IsNullOrEmpty(nInput) || !int.TryParse(nInput, out int n))
             {
-                Console.WriteLine("Invalid input for number of columns. Using default value 2.");
+                Console.WriteLine("Некорректный ввод количества столбцов. Используется значение по умолчанию 2.");
                 n = 2;
             }
             
-            // Create and fill the matrix
+            // Создание и заполнение матрицы
             double[,] matrix = new double[m, n];
             FillMatrix(matrix, m, n);
             
-            // Display the matrix
-            Console.WriteLine("\nPayment Matrix:");
+            // Отображение матрицы
+            Console.WriteLine("\nМатрица платежей:");
             PrintMatrix(matrix, m, n);
             
-            // Find upper and lower prices of the game
+            // Найти верхнюю и нижнюю цены игры
             var (lowerPrice, upperPrice) = FindGamePrices(matrix, m, n);
-            Console.WriteLine($"\nLower price of the game (maximin): {lowerPrice}");
-            Console.WriteLine($"Upper price of the game (minimax): {upperPrice}");
+            Console.WriteLine($"\nНижняя цена игры (максимин): {lowerPrice}");
+            Console.WriteLine($"Верхняя цена игры (минимакс): {upperPrice}");
             
-            // Find saddle points
+            // Найти седловые точки
             var saddlePoints = FindSaddlePoints(matrix, m, n);
             
             if (saddlePoints.Count > 0)
             {
-                Console.WriteLine("\nSaddle points found:");
+                Console.WriteLine("\nНайдены седловые точки:");
                 foreach (var point in saddlePoints)
                 {
-                    Console.WriteLine($"  Position: ({point.Row}, {point.Col}), Value: {matrix[point.Row, point.Col]}");
+                    Console.WriteLine($"  Позиция: ({point.Row}, {point.Col}), Значение: {matrix[point.Row, point.Col]}");
                 }
                 
-                Console.WriteLine("\nSolutions in pure strategies:");
+                Console.WriteLine("\nРешения в чистых стратегиях:");
                 foreach (var point in saddlePoints)
                 {
-                    Console.WriteLine($"  Player A chooses strategy {point.Row + 1}, Player B chooses strategy {point.Col + 1}");
+                    Console.WriteLine($"  Игрок A выбирает стратегию {point.Row + 1}, Игрок B выбирает стратегию {point.Col + 1}");
                 }
             }
             else
             {
-                Console.WriteLine("\nNo saddle points found.");
+                Console.WriteLine("\nСедловые точки не найдены.");
                 
-                // Try to simplify the matrix by eliminating dominated rows and columns
-                Console.WriteLine("\nSimplifying matrix by eliminating dominated strategies...");
+                // Попытка упростить матрицу, исключив доминируемые строки и столбцы
+                Console.WriteLine("\nУпрощение матрицы путем исключения доминируемых стратегий...");
                 var simplifiedMatrix = SimplifyMatrix(matrix, m, n);
                 
                 if (simplifiedMatrix.GetLength(0) == 2 && simplifiedMatrix.GetLength(1) == 2)
                 {
-                    Console.WriteLine("\nSimplified matrix is 2x2. Solving in mixed strategies:");
+                    Console.WriteLine("\nУпрощенная матрица 2x2. Решение в смешанных стратегиях:");
                     PrintMatrix(simplifiedMatrix, simplifiedMatrix.GetLength(0), simplifiedMatrix.GetLength(1));
                     SolveMixedStrategy(simplifiedMatrix);
                 }
                 else
                 {
-                    Console.WriteLine($"\nSimplified matrix size: {simplifiedMatrix.GetLength(0)}x{simplifiedMatrix.GetLength(1)}");
-                    Console.WriteLine("Matrix is not 2x2, cannot solve in mixed strategies with this implementation.");
+                    Console.WriteLine($"\nРазмер упрощенной матрицы: {simplifiedMatrix.GetLength(0)}x{simplifiedMatrix.GetLength(1)}");
+                    Console.WriteLine("Матрица не 2x2, невозможно решить в смешанных стратегиях с этой реализацией.");
                     PrintMatrix(simplifiedMatrix, simplifiedMatrix.GetLength(0), simplifiedMatrix.GetLength(1));
                 }
             }
@@ -83,16 +83,16 @@ namespace GameTheorySolver
         
         static void FillMatrix(double[,] matrix, int m, int n)
         {
-            Console.WriteLine("\nEnter matrix elements row by row:");
+            Console.WriteLine("\nВведите элементы матрицы по строкам:");
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    Console.Write($"Enter element [{i+1},{j+1}]: ");
+                    Console.Write($"Введите элемент [{i+1},{j+1}]: ");
                     string? input = Console.ReadLine();
                     if (string.IsNullOrEmpty(input) || !double.TryParse(input, out double value))
                     {
-                        Console.WriteLine("Invalid input. Using default value 0.0.");
+                        Console.WriteLine("Некорректный ввод. Используется значение по умолчанию 0.0.");
                         value = 0.0;
                     }
                     matrix[i, j] = value;
@@ -339,7 +339,7 @@ namespace GameTheorySolver
                 }
             }
             
-            Console.WriteLine($"Matrix simplified from {m}x{n} to {remainingRows.Count}x{remainingCols.Count}");
+            Console.WriteLine($"Матрица упрощена с {m}x{n} до {remainingRows.Count}x{remainingCols.Count}");
             
             return simplifiedMatrix;
         }
@@ -360,7 +360,7 @@ namespace GameTheorySolver
             
             if (Math.Abs(denominator) < 1e-9)
             {
-                Console.WriteLine("The game has no solution in mixed strategies (denominator is zero).");
+                Console.WriteLine("Игра не имеет решения в смешанных стратегиях (знаменатель равен нулю).");
                 return;
             }
             
@@ -368,11 +368,11 @@ namespace GameTheorySolver
             double q = (d - b) / denominator;  // Probability of Player B choosing first strategy
             double value = (a * d - b * c) / denominator;
             
-            Console.WriteLine($"Optimal mixed strategy for Player A:");
-            Console.WriteLine($"  Strategy 1: {p:F4}, Strategy 2: {1 - p:F4}");
-            Console.WriteLine($"Optimal mixed strategy for Player B:");
-            Console.WriteLine($"  Strategy 1: {q:F4}, Strategy 2: {1 - q:F4}");
-            Console.WriteLine($"Value of the game: {value:F4}");
+            Console.WriteLine($"Оптимальная смешанная стратегия для Игрока A:");
+            Console.WriteLine($"  Стратегия 1: {p:F4}, Стратегия 2: {1 - p:F4}");
+            Console.WriteLine($"Оптимальная смешанная стратегия для Игрока B:");
+            Console.WriteLine($"  Стратегия 1: {q:F4}, Стратегия 2: {1 - q:F4}");
+            Console.WriteLine($"Значение игры: {value:F4}");
         }
     }
     
