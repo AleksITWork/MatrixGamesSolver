@@ -9,6 +9,7 @@ This C# application implements game theory algorithms for solving two-player zer
 3. **Saddle Point Detection**: Identify all saddle points in the matrix and provide solutions in pure strategies
 4. **Matrix Simplification**: Eliminate dominated strategies (rows and columns) to simplify the matrix
 5. **Mixed Strategy Solution**: For 2x2 matrices, solve the game in mixed strategies
+6. **Complete Strategy Analysis**: All original strategies are included in the final solution, with dominated strategies assigned zero probability
 
 ## Game Theory Concepts
 
